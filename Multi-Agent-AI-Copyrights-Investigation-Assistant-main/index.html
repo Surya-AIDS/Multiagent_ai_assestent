@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-Agent AI Copyright Investigation Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Sticky Header -->
+  <header class="header">
+    <div class="header-container">
+      <div class="brand">
+        <div class="brand-icon">⚖️</div>
+        <div class="brand-title">
+          <h1>Multi-Agent AI Copyright Assistant</h1>
+          <p>LangChain RAG Architecture &bull; 7 Collaborative Agents &bull; Evidence-Based Reports</p>
+        </div>
+      </div>
+
+      <div class="system-status">
+        <div class="status-badge">
+          <span class="status-dot pulse"></span>
+          <span>7 Active Agents</span>
+        </div>
+        <div class="status-badge" id="vectorCountBadge" title="Click to Manage RAG Vector Database">
+          📚 Indexed RAG Sources: Loading...
+        </div>
+        <div class="status-badge" style="border-color: rgba(99, 102, 241, 0.4);">
+          RAG Embedding Engine: Active
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Application Grid -->
+  <main class="app-container">
+    
+    <!-- Left Panel: Input & Configuration -->
+    <section class="glass-card">
+      <div class="card-header">
+        <div class="card-title">
+          <span>📥 Investigation Input Suite</span>
+        </div>
+      </div>
+
+      <!-- Mode Selector Tabs -->
+      <div class="tab-group">
+        <button class="tab-btn active" data-type="text">📄 Text / Manuscript</button>
+        <button class="tab-btn" data-type="code">💻 Source Code</button>
+        <button class="tab-btn" data-type="image">🖼️ Image Audit</button>
+      </div>
+
+      <!-- File Dropzone -->
+      <div class="file-dropzone" id="fileDropzone">
+        <p id="fileDropzoneText">📁 Drag & drop <strong>.txt, .md, .py, .js, .java, .cpp</strong> file here or click to upload</p>
+        <input type="file" id="fileInput" style="display: none;" accept=".txt,.md,.py,.js,.java,.cpp,.json,.html,.css">
+      </div>
+
+      <!-- Quick Preset Cases -->
+      <div class="form-group">
+        <label class="form-label">
+          <span>⚡ Preset Demonstration Cases</span>
+        </label>
+        <div class="preset-container">
+          <button class="preset-btn" data-preset="paraphrased">
+            <strong>Case 1: Paraphrased</strong>
+            <span>Medium-High Risk text</span>
+          </button>
+          <button class="preset-btn" data-preset="code_clone">
+            <strong>Case 2: GPL Code Clone</strong>
+            <span>High Risk code similarity</span>
+          </button>
+          <button class="preset-btn" data-preset="missing_citation">
+            <strong>Case 3: Uncited Paper</strong>
+            <span>Attribution deficit case</span>
+          </button>
+          <button class="preset-btn" data-preset="original">
+            <strong>Case 4: Original Work</strong>
+            <span>Very Low Risk baseline</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Content Textarea -->
+      <div class="form-group">
+        <label class="form-label" for="inputContent">
+          <span>Content to Investigate</span>
+          <span style="font-size: 0.7rem; color: var(--text-muted);">Paste article, manuscript, or code</span>
+        </label>
+        <textarea id="inputContent" class="form-textarea" placeholder="Paste document, article, draft, or manuscript text here..."></textarea>
+      </div>
+
+      <!-- Advanced RAG Parameters -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+        <div class="form-group">
+          <label class="form-label" for="similarityThreshold">Similarity Threshold</label>
+          <select id="similarityThreshold" class="form-select">
+            <option value="0.25">Low (25%+ match)</option>
+            <option value="0.40" selected>Standard (40%+ match)</option>
+            <option value="0.60">Strict (60%+ match)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="topKResults">RAG Top-K Search</label>
+          <select id="topKResults" class="form-select">
+            <option value="3" selected>Top 3 Sources</option>
+            <option value="5">Top 5 Sources</option>
+            <option value="10">Top 10 Sources</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Primary Action -->
+      <button id="startInvestigationBtn" class="btn-primary" style="width: 100%; margin-top: 0.5rem;">
+        🚀 Launch 7-Agent Investigation Pipeline
+      </button>
+
+      <div style="font-size: 0.7rem; color: var(--text-muted); text-align: center; margin-top: 0.2rem;">
+        🔒 All content processed locally. Does not make final legal determinations.
+      </div>
+    </section>
+
+    <!-- Right Panel: Live Agent Pipeline & Investigation Report -->
+    <section class="glass-card results-card">
+      
+      <!-- Multi-Agent Orchestration Visualizer -->
+      <div class="agent-pipeline">
+        <div class="agent-node" id="agentNode1">
+          <div class="agent-icon">🧠</div>
+          <div class="agent-name">1. Content</div>
+          <div class="agent-status-tag">Ready</div>
+        </div>
+        <div class="agent-node" id="agentNode2">
+          <div class="agent-icon">🔍</div>
+          <div class="agent-name">2. RAG Search</div>
+          <div class="agent-status-tag">Ready</div>
+        </div>
+        <div class="agent-node" id="agentNode3">
+          <div class="agent-icon">⚡</div>
+          <div class="agent-name">3. Similarity</div>
+          <div class="agent-status-tag">Ready</div>
+        </div>
+        <div class="agent-node" id="agentNode4">
+          <div class="agent-icon">📝</div>
+          <div class="agent-name">4. Citations</div>
+          <div class="agent-status-tag">Ready</div>
+        </div>
+        <div class="agent-node" id="agentNode5">
+          <div class="agent-icon">⚖️</div>
+          <div class="agent-name">5. Legal Knowledge</div>
+          <div class="agent-status-tag">Ready</div>
+        </div>
+        <div class="agent-node" id="agentNode6">
+          <div class="agent-icon">🛡️</div>
+          <div class="agent-name">6. Risk Audit</div>
+          <div class="agent-status-tag">Ready</div>
+        </div>
+        <div class="agent-node" id="agentNode7">
+          <div class="agent-icon">📄</div>
+          <div class="agent-name">7. Report Gen</div>
+          <div class="agent-status-tag">Ready</div>
+        </div>
+      </div>
+
+      <!-- Navigation Bar for Investigation Findings -->
+      <div class="results-nav">
+        <button class="results-tab active" data-target="overview">📊 Overview & Risk Meter</button>
+        <button class="results-tab" data-target="diff">🔍 Passage Match Diff</button>
+        <button class="results-tab" data-target="rag">📚 RAG Retrieved Sources</button>
+        <button class="results-tab" data-target="legal">⚖️ Citation & Fair Use Audit</button>
+        <button class="results-tab" data-target="report">📄 Investigation Report (Markdown)</button>
+      </div>
+
+      <!-- Dynamic Content Injection Container -->
+      <div id="resultsDisplayArea">
+        <div style="text-align:center; padding: 4rem 1rem; color: var(--text-muted);">
+          <div style="font-size: 3rem; margin-bottom: 1rem;">🔍</div>
+          <p style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
+            Ready for Copyright Investigation
+          </p>
+          <p style="font-size: 0.85rem;">
+            Click <strong>Launch 7-Agent Investigation Pipeline</strong> or select a <strong>Preset Case</strong> to analyze text, code, or document content across vector databases.
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Vector DB Manager Modal -->
+  <div class="modal-overlay" id="vectorModal">
+    <div class="modal-container">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1rem;">
+        <h3 style="font-size: 1.1rem; color: #fff;">📚 RAG Vector Database Manager</h3>
+        <button class="btn-secondary" onclick="closeVectorModal()" style="padding: 0.25rem 0.6rem;">✕ Close</button>
+      </div>
+
+      <div style="margin-bottom: 1rem;">
+        <h4 style="font-size: 0.85rem; color: var(--accent-cyan); margin-bottom: 0.5rem;">Indexed Reference Sources</h4>
+        <div id="vectorDbListContainer"></div>
+      </div>
+
+      <div style="border-top: 1px solid var(--border-color); padding-top: 1rem;">
+        <h4 style="font-size: 0.85rem; color: var(--accent-emerald); margin-bottom: 0.5rem;">➕ Index New Reference Source</h4>
+        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+          <input type="text" id="newDocTitle" class="form-input" placeholder="Source Title (e.g. Clean Architecture Handbook)">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+            <input type="text" id="newDocAuthor" class="form-input" placeholder="Author / Publisher">
+            <input type="text" id="newDocLicense" class="form-input" placeholder="License (e.g. MIT, Copyrighted, CC-BY)">
+          </div>
+          <textarea id="newDocContent" class="form-textarea" style="min-height: 90px;" placeholder="Reference text passage or code snippet to index..."></textarea>
+          <button class="btn-primary" onclick="addCustomVectorDoc()" style="margin-top: 0.4rem;">Index Source into Vector Database</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
