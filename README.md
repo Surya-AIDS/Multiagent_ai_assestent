@@ -41,8 +41,8 @@ This project explores an AI-assisted workflow that brings these tasks together i
 
 The following values are taken from the displayed dashboard screenshot. They illustrate the current interface and should not be interpreted as independently validated copyright findings.
 <img width="959" height="472" alt="Screenshot 2026-10-28 115615" src="https://github.com/user-attachments/assets/220e6ad0-e25c-4d8f-8741-143be6fb9f81" />
-![Uploading Screenshot 2026-10-28 115934.png…]()
-![Uploading Screenshot 2026-10-28 115706.png…]()
+![Uploading output.png…]()
+
 
 
 ### 1. Investigation Pipeline
@@ -89,6 +89,8 @@ The interface provides dedicated views for:
 3. Compare content using an appropriate similarity method.
 4. Present relevant source metadata and attribution information.
 5. Organize potential risks and findings for human review.
+<img width="944" height="479" alt="workflow" src="https://github.com/user-attachments/assets/629c4f65-6aac-4e9a-8a29-6da7b316113c" />
+
 
 The reliability of each step depends on the retrieval corpus, similarity method, configured AI models, and available backend services.
 
