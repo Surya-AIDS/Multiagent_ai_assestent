@@ -40,6 +40,10 @@ This project explores an AI-assisted workflow that brings these tasks together i
 ## 🖥️ Sample Application Output
 
 The following values are taken from the displayed dashboard screenshot. They illustrate the current interface and should not be interpreted as independently validated copyright findings.
+<img width="959" height="472" alt="Screenshot 2026-10-28 115615" src="https://github.com/user-attachments/assets/220e6ad0-e25c-4d8f-8741-143be6fb9f81" />
+![Uploading Screenshot 2026-10-28 115934.png…]()
+![Uploading Screenshot 2026-10-28 115706.png…]()
+
 
 ### 1. Investigation Pipeline
 
