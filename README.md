@@ -233,7 +233,7 @@ This application is intended as an investigation-support tool, not a substitute 
 
 **SURYA PRAKASH P**
 
-B.Tech — Artificial Intelligence and Data Science
+B.Tech.-Artificial Intelligence and Data Science
 
 Interests: Artificial Intelligence, Machine Learning, Data Science, and AI application development.
 
