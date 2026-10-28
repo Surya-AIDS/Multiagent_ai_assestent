@@ -225,16 +225,10 @@ This application is intended as an investigation-support tool, not a substitute 
 
 ## 👩‍💻 Author
 
-**Kokila M.**
+**SURYA PRAKASH P**
 
 B.Tech — Artificial Intelligence and Data Science
 
 Interests: Artificial Intelligence, Machine Learning, Data Science, and AI application development.
-
-## 📄 License
-
-Add the appropriate license for your project. If you use third-party datasets, models, libraries, or reference materials, comply with their respective licensing terms.
-
----
 
 *Built to explore how AI-assisted retrieval, similarity analysis, and structured investigation workflows can support copyright research.*
